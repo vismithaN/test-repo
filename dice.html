@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dice Roller</title>
+    <style>
+      :root {
+        font-family: Georgia, serif;
+        color: #1f2933;
+        background: #fdf6ec;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        background:
+          linear-gradient(160deg, rgba(255, 255, 255, 0.75), rgba(255, 244, 214, 0.85)),
+          repeating-linear-gradient(
+            45deg,
+            rgba(199, 210, 254, 0.12) 0,
+            rgba(199, 210, 254, 0.12) 18px,
+            rgba(255, 255, 255, 0.12) 18px,
+            rgba(255, 255, 255, 0.12) 36px
+          );
+      }
+
+      main {
+        width: min(92vw, 28rem);
+        padding: 2rem;
+        border: 2px solid #d9a441;
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 16px 30px rgba(93, 64, 17, 0.14);
+        text-align: center;
+      }
+
+      h1 {
+        margin: 0 0 0.75rem;
+      }
+
+      button {
+        margin-top: 1rem;
+        padding: 0.8rem 1.4rem;
+        border: none;
+        border-radius: 999px;
+        background: #c05621;
+        color: #fff;
+        font: inherit;
+        cursor: pointer;
+      }
+
+      #result {
+        margin-top: 1rem;
+        font-size: 2.5rem;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Dice Roller</h1>
+      <p>Press the button to roll a six-sided die.</p>
+      <button id="roll" type="button">Roll Dice</button>
+      <div id="result" aria-live="polite">-</div>
+    </main>
+    <script>
+      const button = document.getElementById("roll");
+      const result = document.getElementById("result");
+
+      button.addEventListener("click", () => {
+        const roll = Math.floor(Math.random() * 6) + 1;
+        result.textContent = String(roll);
+      });
+    </script>
+  </body>
+</html>
