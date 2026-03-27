@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random Page</title>
+    <style>
+      :root {
+        font-family: system-ui, sans-serif;
+        color: #102a43;
+        background: #f0f4f8;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        background:
+          radial-gradient(circle at top, #d9e2ec, transparent 45%),
+          linear-gradient(180deg, #f8fbff 0%, #e4ecf4 100%);
+      }
+
+      main {
+        width: min(90vw, 32rem);
+        padding: 2rem;
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.92);
+        box-shadow: 0 18px 45px rgba(16, 42, 67, 0.15);
+        text-align: center;
+      }
+
+      h1 {
+        margin-top: 0;
+      }
+
+      button {
+        margin-top: 1rem;
+        border: 0;
+        border-radius: 999px;
+        padding: 0.8rem 1.2rem;
+        background: #0b7285;
+        color: #fff;
+        font: inherit;
+        cursor: pointer;
+      }
+
+      #message {
+        min-height: 1.5rem;
+        margin-top: 1rem;
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Random Change Generator</h1>
+      <p>Click the button to show a random test message for this PR.</p>
+      <button id="shuffle" type="button">Show Random Message</button>
+      <p id="message" aria-live="polite"></p>
+    </main>
+    <script>
+      const messages = [
+        "Webhook smoke test in progress.",
+        "This repository now has a random demo page.",
+        "Tiny PRs make debugging much easier.",
+        "Randomized message selected successfully."
+      ];
+
+      const output = document.getElementById("message");
+      const button = document.getElementById("shuffle");
+
+      button.addEventListener("click", () => {
+        const index = Math.floor(Math.random() * messages.length);
+        output.textContent = messages[index];
+      });
+    </script>
+  </body>
+</html>
